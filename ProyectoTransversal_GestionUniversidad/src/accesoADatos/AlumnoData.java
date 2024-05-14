@@ -39,7 +39,11 @@ public class AlumnoData {
             ps.setBoolean(5, alumno.isActivo());
             ps.executeUpdate();
             
-            ResultSet re = ps.getGeneratedKeys();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                alumno.setIdAlumno(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Alumno guardado");
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
