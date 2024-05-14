@@ -37,13 +37,52 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
             ps.setBoolean(5, alumno.isActivo());
-            ps.executeUpdate();
-            
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se creo el alumno");
+            }
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 alumno.setIdAlumno(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno guardado");
             }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+    }
+    
+    public void modificarAlumno(Alumno alumno){
+        String SQL = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?,"
+                + " fechaNacimiento = ? WHERE idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setInt(5, alumno.getIdAlumno());
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Se modifico el alumno");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+    }
+    
+    public void eliminarAlumno(int id){
+        String SQL = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+        
+        try {
+            PreparedStatement ps =  con.prepareStatement(SQL);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Alumno eliminado");
+            }
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
