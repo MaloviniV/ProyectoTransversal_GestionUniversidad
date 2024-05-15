@@ -77,6 +77,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel5.setText("ESTADO:");
 
         jRadioButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jRadioButton1.setText("ACTIVO");
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setText("Nuevo");
@@ -172,8 +174,8 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(22, 22, 22)
+                .addGroup(jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jRadioButton1))
                 .addGap(18, 18, 18)

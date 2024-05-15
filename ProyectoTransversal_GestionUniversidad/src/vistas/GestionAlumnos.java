@@ -75,6 +75,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         });
 
         jRadioButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
+        jRadioButton1.setText("ACTIVO");
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setText("Buscar");
@@ -172,10 +174,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jRadioButton1))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
