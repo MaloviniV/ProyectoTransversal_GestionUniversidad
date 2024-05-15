@@ -20,7 +20,7 @@ public class Conexion {
         if (connection == null) {
             
             try {
-                Class.forName("org.mariabd.jbdc.Driver");
+                Class.forName("org.mariadb.jbdc.Driver");
                 connection = DriverManager.getConnection(URL+DB, USUARIO, PASSWORD);
                 
             } catch (ClassNotFoundException ex) {
