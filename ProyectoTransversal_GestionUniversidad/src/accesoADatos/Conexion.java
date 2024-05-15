@@ -20,11 +20,11 @@ public class Conexion {
         if (connection == null) {
             
             try {
-                Class.forName("org.mariadb.jbdc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(URL+DB, USUARIO, PASSWORD);
                 
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null, "Error al cargar los Drivers");
+                JOptionPane.showMessageDialog(null, "Error al cargar los Drivers " + ex);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error al conectarse a la Base de Datos");
             }  
