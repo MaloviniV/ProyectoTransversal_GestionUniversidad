@@ -75,7 +75,7 @@ public class AlumnoData {
     }
     
     public void eliminarAlumno(int id){
-        String SQL = "UPDATE alumno SET estado = 0 WHERE idAlumno = ?";
+        String SQL = "UPDATE alumno SET estado = 1 WHERE idAlumno = ?";
         
         try {
             PreparedStatement ps =  con.prepareStatement(SQL);
