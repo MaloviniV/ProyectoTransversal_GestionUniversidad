@@ -1,6 +1,8 @@
 
 import accesoADatos.AlumnoData;
+import accesoADatos.MateriaData;
 import entidades.Alumno;
+import entidades.Materia;
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -58,7 +60,41 @@ public class PruebaTransversal1 {
         }
         */
         
+        /* GUARDAR MATERIA
+        Materia materia = new Materia("Ingles II", 2, true);
+        MateriaData mat = new MateriaData();
+        mat.guardarMateria(materia);
+        */
         
+        /* BUSCAR MATERIA
+        MateriaData mat = new MateriaData();
+        Materia lab = mat.buscarMateria(4);
+        System.out.println("ID Materia: "+ lab.getIdMateria());
+        System.out.println("Nombre: "+ lab.getNombre());
+        System.out.println("Año: "+ lab.getAnioMateria());
+        System.out.println("Estado: "+ lab.isActivo());
+        */
+        
+        /* MODIFICAR MATERIA
+        Materia mat = new Materia(10, "Ingles III", 3, true);
+        MateriaData x = new MateriaData();
+        x.modificarMateria(mat);
+        */
+        
+        /* ELIMINAR MATERIA (Pasa el estado a false)
+        MateriaData mat = new MateriaData();
+        mat.eliminarMateria(10);
+        */
+        
+        /* LISTADO MATERIAS
+        MateriaData mat = new MateriaData();
+        for (Materia lab : mat.listarMaterias()) {
+            System.out.println("ID Materia: "+ lab.getIdMateria());
+            System.out.println("Nombre: "+ lab.getNombre());
+            System.out.println("Año: "+ lab.getAnioMateria());
+            System.out.println("Estado: "+ lab.isActivo());
+        }
+        */
         
     }
     
