@@ -89,6 +89,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Carga de Notas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miManipNotasActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -109,6 +112,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alumnos por Materia"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miAlumnMaterActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

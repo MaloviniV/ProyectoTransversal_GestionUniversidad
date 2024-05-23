@@ -300,7 +300,6 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         
         limpiarCampos();
-        alumnoActual = null;
 
     }//GEN-LAST:event_jBNuevoActionPerformed
 
@@ -357,9 +356,10 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             Integer dni = Integer.parseInt(jTDNI.getText());
             alumnoActual = aluData.buscarAlumnoPorDNI(dni);
             if (alumnoActual != null) {
+                jTID.setText(Integer.toString(alumnoActual.getIdAlumno()));
                 jTApellido.setText(alumnoActual.getApellido());
                 jTNombre.setText(alumnoActual.getNombre());
-                jCEstado.setSelected(true);
+                jCEstado.setSelected(alumnoActual.isActivo());
                 
                 /*
                 LocalDate lc = alumnoActual.getFechaNac();
@@ -388,6 +388,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jTNombre.setText("");
         jCEstado.setSelected(false);
         //jCFechaNac.setDate(new Date());
+        alumnoActual = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -106,6 +106,11 @@ public class Principal extends javax.swing.JFrame {
         mAdministracion.add(miManInsc);
 
         miManipNotas.setText("Carga de Notas");
+        miManipNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miManipNotasActionPerformed(evt);
+            }
+        });
         mAdministracion.add(miManipNotas);
 
         jMenuBar1.add(mAdministracion);
@@ -115,6 +120,11 @@ public class Principal extends javax.swing.JFrame {
         mConsultas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         miAlumnMater.setText("Alumnos por Materia");
+        miAlumnMater.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAlumnMaterActionPerformed(evt);
+            }
+        });
         mConsultas.add(miAlumnMater);
 
         jMenuBar1.add(mConsultas);
@@ -147,6 +157,14 @@ public class Principal extends javax.swing.JFrame {
     private void miManInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miManInscActionPerformed
         mostrarPestaña(new Inscripciones());
     }//GEN-LAST:event_miManInscActionPerformed
+
+    private void miManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miManipNotasActionPerformed
+        mostrarPestaña(new ActualizacionDeNotas());
+    }//GEN-LAST:event_miManipNotasActionPerformed
+
+    private void miAlumnMaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAlumnMaterActionPerformed
+        mostrarPestaña(new ConsultaDeAlumnosPorMateria());
+    }//GEN-LAST:event_miAlumnMaterActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
