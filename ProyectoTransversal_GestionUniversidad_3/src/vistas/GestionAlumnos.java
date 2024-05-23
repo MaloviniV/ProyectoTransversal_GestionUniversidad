@@ -357,6 +357,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
             Integer dni = Integer.parseInt(jTDNI.getText());
             alumnoActual = aluData.buscarAlumnoPorDNI(dni);
             if (alumnoActual != null) {
+                jTID.setText(Integer.toString(alumnoActual.getIdAlumno()));
                 jTApellido.setText(alumnoActual.getApellido());
                 jTNombre.setText(alumnoActual.getNombre());
                 jCEstado.setSelected(true);
