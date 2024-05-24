@@ -127,6 +127,11 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel6.setText("Fecha Nacim.:");
 
         jTDNI.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
+        jTDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTDNIKeyTyped(evt);
+            }
+        });
 
         jTApellido.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
 
@@ -375,6 +380,12 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         dispose();
         
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDNIKeyTyped
+        if(!(jTDNI.getText()+evt.getKeyChar()).matches("\\d{1,8}")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTDNIKeyTyped
 
     public void limpiarCampos(){
         jTID.setText("");
