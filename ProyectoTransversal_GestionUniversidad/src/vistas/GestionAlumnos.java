@@ -327,36 +327,55 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         
-        try {
-            Integer dni = Integer.parseInt(jTDNI.getText());
+        if(jTDNI.getText().isEmpty()||jTApellido.getText().isEmpty()||jTNombre.getText().isEmpty()||dcFechaNacim.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Complete todos los campos", "CAMPOS VACIOS", JOptionPane.ERROR_MESSAGE);
+        }else{
+            int dni = Integer.parseInt(jTDNI.getText());
             String apellido = jTApellido.getText();
-            String nombre = jTNombre.getText();
-            if (nombre.isEmpty() || apellido.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-                return;
+            String nombre = jTNombre.getText();            
+            Date f=new Date(dcFechaNacim.getDate().getTime());  //Casteo de util.Date a sql.Date
+            LocalDate fechaN = f.toLocalDate();     //recibo la fecha en sql.Date y la paso a localdate            
+            boolean estado = true;
+            
+            Alumno alum = new Alumno(dni,apellido,nombre,fechaN,estado);
+            
+            String texto = "DESEA GUARDAR EL ALUMNO/A:\n"+alum.toString();
+            int guardar = JOptionPane.showConfirmDialog(this, texto, "CONFIRMAR ALUMNO", JOptionPane.YES_NO_OPTION);
+            if(guardar == 0){
+                new AlumnoData().guardarAlumno(alum);                
             }
-            /*
-            java.util.Date sfecha = jCFechaNac.getDate();
-            LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            */
-            Boolean estado = jCEstado.isSelected();
-            if (alumnoActual == null) {
-                //alumnoActual = new Alumno(dni, apellido, nombre, fechaNac, estado);
-                alumnoActual = new Alumno(dni, apellido, nombre, LocalDate.of(2003, Month.APRIL, 8), estado);
-                aluData.guardarAlumno(alumnoActual);
-            } else {
-                alumnoActual.setDni(dni);
-                alumnoActual.setApellido(apellido);
-                alumnoActual.setNombre(nombre);
-                //alumnoActual.setFechaNac(fechaNac);
-                alumnoActual.setFechaNac(LocalDate.of(2003, Month.APRIL, 8));
-                alumnoActual.setActivo(estado);
-                aluData.modificarAlumno(alumnoActual);
-                
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI valido");
         }
+        
+//        try {
+//            Integer dni = Integer.parseInt(jTDNI.getText());
+//            String apellido = jTApellido.getText();
+//            String nombre = jTNombre.getText();
+//            if (nombre.isEmpty() || apellido.isEmpty()) {
+//                JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+//                return;
+//            }
+//            /*
+//            java.util.Date sfecha = jCFechaNac.getDate();
+//            LocalDate fechaNac = sfecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            */
+//            Boolean estado = jCEstado.isSelected();
+//            if (alumnoActual == null) {
+//                //alumnoActual = new Alumno(dni, apellido, nombre, fechaNac, estado);
+//                alumnoActual = new Alumno(dni, apellido, nombre, LocalDate.of(2003, Month.APRIL, 8), estado);
+//                aluData.guardarAlumno(alumnoActual);
+//            } else {
+//                alumnoActual.setDni(dni);
+//                alumnoActual.setApellido(apellido);
+//                alumnoActual.setNombre(nombre);
+//                //alumnoActual.setFechaNac(fechaNac);
+//                alumnoActual.setFechaNac(LocalDate.of(2003, Month.APRIL, 8));
+//                alumnoActual.setActivo(estado);
+//                aluData.modificarAlumno(alumnoActual);
+//                
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Debe ingresar un DNI valido");
+//        }
         
     }//GEN-LAST:event_jBGuardarActionPerformed
 

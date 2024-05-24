@@ -39,18 +39,21 @@ public class AlumnoData {
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
             ps.setBoolean(5, alumno.isActivo());
-            int exito = ps.executeUpdate();
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Se creo el alumno");
-            }
+            ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
+            
             if (rs.next()) {
                 alumno.setIdAlumno(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Alumno guardado");
             }
             ps.close();
+            
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            if(ex.getErrorCode()==1062){
+                JOptionPane.showMessageDialog(null,"Alumno Repetido");                
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            }
         }
     }
     
