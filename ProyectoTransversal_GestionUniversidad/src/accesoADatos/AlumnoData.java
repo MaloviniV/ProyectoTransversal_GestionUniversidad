@@ -119,7 +119,7 @@ public class AlumnoData {
     }
     
     public Alumno buscarAlumnoPorDNI(int dni){
-        String SQL = "SELECT idAlumno, dni, apellido, nombre, fechaNacimiento "
+        String SQL = "SELECT * "
                 + "FROM alumno WHERE dni = ?";
         Alumno alumno = null;
         try {
