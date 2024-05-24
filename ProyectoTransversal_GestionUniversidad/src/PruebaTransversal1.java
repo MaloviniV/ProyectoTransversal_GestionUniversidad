@@ -98,7 +98,7 @@ public class PruebaTransversal1 {
         }
         */
         
-       //Probando inscribir alumno a materia
+       /*} PROBANDO INSCRIBIR ALUMNO A MATERIA
         Inscripcion n=new Inscripcion();
         AlumnoData ad=new AlumnoData();
         MateriaData md=new MateriaData();
@@ -106,18 +106,19 @@ public class PruebaTransversal1 {
         
         Alumno maximo=ad.buscarAlumno(1);
         Materia mat=md.buscarMateria(4);
-        Inscripcion ins=new Inscripcion(maximo,mat,6);
-//        
+        Inscripcion ins=new Inscripcion(maximo,mat,6);        
+        id.guardarInscripcion(ins);
+        */
         
-        //id.guardarInscripcion(ins);
+        /* ACTUALIZANDO NOTA
+        id.actualizarNota(1, 9, 6);
+        */
         
-        // Actualizando nota
-        //id.actualizarNota(1, 9, 6);
+        /* BORRANDO INSCRIPCION       
+        id.borrarInscripcion(1, 9);
+        */
         
-        //Borrando inscripcion
-        //id.borrarInscripcion(1, 9);
-        
-        //Obteniendo todas las inscripciones
+        /* OBTENIENDO TODAS LAS INSCRIPCIONES 
         for (Inscripcion inscrip:id.obtenerInscripciones()) {
             
             System.out.println("id "+inscrip.getIdInscripcion());
@@ -125,53 +126,42 @@ public class PruebaTransversal1 {
             System.out.println("Materia "+inscrip.getMateria().getNombre());
             
         }
+        */
+        
+        /* OBTENIENDO INSCRIPCIONES POR ALUMNO
+        for (Inscripcion inscrip:id.InscripcionesPorAlumnos(1)) {
+            
+            System.out.println("id "+inscrip.getIdInscripcion());
+            System.out.println("Apellido "+inscrip.getAlumno().getApellido());
+            System.out.println("Materia "+inscrip.getMateria().getNombre());
+            
+        }
+        */
         
         
-//        Obteniendo inscripciones por alumno
-//        for (Inscripcion inscrip:id.InscripcionesPorAlumnos(1)) {
-//            
-//            System.out.println("id "+inscrip.getIdInscripcion());
-//            System.out.println("Apellido "+inscrip.getAlumno().getApellido());
-//            System.out.println("Materia "+inscrip.getMateria().getNombre());
-//            
-//        }
+        /* INSCRIPCIONES POR MATERIAS CURSADAS 
+        for (Materia materia:id.materiasCursadas(2)) {
+           
+            System.out.println("nombre "+materia.getNombre());
+            
+        }
+        */
+          
+        /* INSCRIPCIONES POR MATERIAS NO CURSADAS
+        for (Materia materia:id.materiasNoCursadas(2)) {
         
-//         Inscripciones por materias cursadas
-//        for (Materia materia:id.materiasCursadas(2)) {
-//            
-//            System.out.println("nombre "+materia.getNombre());
-//            
-//        }
-
+            System.out.println("nombre "+materia.getNombre()); 
         
-        //Inscripciones por materias no cursadas
-//         for (Materia materia:id.materiasNoCursadas(2)) {
-//            
-//            System.out.println("nombre "+materia.getNombre());
-//            
-//        }
+        }
+        */
          
-         //Inscripciones por alumno cursando materia
-//         for (Alumno alum:id.alumnosCursandoMateria(4)) {
-//            
-//            System.out.println("nombre "+alum.getNombre());
-//            
-//        }
-
-
-
-
-
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        /* INSCRIPCIONES POR ALUMNO CURSANDO MATERIA
+         for (Alumno alum:id.alumnosCursandoMateria(4)) {
+             
+         System.out.println("nombre "+alum.getNombre());
+         
+        }
+        */
     }
     
 }
