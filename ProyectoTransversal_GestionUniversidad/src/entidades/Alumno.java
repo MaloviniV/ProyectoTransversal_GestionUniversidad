@@ -1,6 +1,7 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Alumno {
     private int idAlumno;
@@ -80,7 +81,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "DNI: "+dni+"\nAPELLIDO: "+apellido+"\nNOMBRE: "+nombre+"\nF. NACIMIENTO: "+fechaNac;
+        return "DNI: "+dni+"\nAPELLIDO: "+apellido+"\nNOMBRE: "+nombre+"\nF. NACIMIENTO: "+fechaNac.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
     
     
