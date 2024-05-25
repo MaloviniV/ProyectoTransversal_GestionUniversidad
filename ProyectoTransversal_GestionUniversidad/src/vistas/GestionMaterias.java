@@ -36,7 +36,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTNombre = new javax.swing.JTextField();
-        jTAño = new javax.swing.JTextField();
         pBotonesInf = new javax.swing.JPanel();
         jBNuevo = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
@@ -46,6 +45,7 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         jTID = new javax.swing.JTextField();
         jCEstado = new javax.swing.JCheckBox();
+        cbAño = new javax.swing.JComboBox<>();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -124,8 +124,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
 
         jTNombre.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
 
-        jTAño.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
-
         pBotonesInf.setMinimumSize(new java.awt.Dimension(690, 30));
         pBotonesInf.setPreferredSize(new java.awt.Dimension(688, 50));
 
@@ -201,8 +199,18 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
         jLabel11.setText("Código:");
 
         jTID.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
+        jTID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTIDKeyTyped(evt);
+            }
+        });
 
         jCEstado.setText("ACTIVO");
+
+        cbAño.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
+        cbAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        cbAño.setSelectedIndex(-1);
+        cbAño.setToolTipText("");
 
         javax.swing.GroupLayout pDatosLayout = new javax.swing.GroupLayout(pDatos);
         pDatos.setLayout(pDatosLayout);
@@ -216,9 +224,9 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jTAño, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAño, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,25 +245,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
                 .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDatosLayout.createSequentialGroup()
                         .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pDatosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jTAño, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17)
+                        .addGroup(pDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pDatosLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCEstado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(pBotonesInf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -289,22 +297,25 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         
         try {
-            Integer id = Integer.parseInt(jTID.getText());
+            Integer id = Integer.valueOf(jTID.getText());
             materiaActual = matData.buscarMateria(id);
             if (materiaActual != null) {
                 jTNombre.setText(materiaActual.getNombre());
-                jTAño.setText(Integer.toString(materiaActual.getAnioMateria()));
+                cbAño.setSelectedItem(materiaActual.getAnioMateria()+"");
                 jCEstado.setSelected(materiaActual.isActivo());
+            }else{
+                limpiarCampos();
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un numero valido");
+            limpiarCampos();
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         
             String nombre = jTNombre.getText();
-            Integer año = Integer.parseInt(jTAño.getText());
+            Integer año = Integer.valueOf(cbAño.getSelectedItem().toString());
             Boolean estado = jCEstado.isSelected();
             if (nombre.isEmpty() || año == null) {
                 JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
@@ -336,20 +347,26 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
             limpiarCampos();
         } else {
             JOptionPane.showMessageDialog(this, "No hay una materia seleccionada");
-        }
-        
+        }        
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jTIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTIDKeyTyped
+        if(!(jTID.getText()+evt.getKeyChar()).matches("\\d{1,8}")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTIDKeyTyped
 
     
     public void limpiarCampos(){
         jTID.setText("");
         jTNombre.setText("");
-        jTAño.setText("");
+        cbAño.setSelectedIndex(-1);
         jCEstado.setSelected(false);
         materiaActual = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbAño;
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
@@ -368,7 +385,6 @@ public class GestionMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTAño;
     private javax.swing.JTextField jTID;
     private javax.swing.JTextField jTNombre;
     private javax.swing.JPanel pBotonesInf;
