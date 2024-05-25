@@ -1,4 +1,3 @@
-
 import accesoADatos.AlumnoData;
 import accesoADatos.InscripcionData;
 import accesoADatos.MateriaData;
@@ -8,16 +7,8 @@ import entidades.Materia;
 import java.time.LocalDate;
 import java.time.Month;
 
-
-/**
- *
- * @author Cristian
- */
 public class PruebaTransversal1 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         /* GUARDAR ALUMNO

@@ -212,6 +212,8 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Código:");
 
+        jTID.setEditable(false);
+        jTID.setBackground(new java.awt.Color(255, 255, 255));
         jTID.setFont(new java.awt.Font("Roboto Black", 1, 16)); // NOI18N
 
         jCEstado.setText("ACTIVO");
@@ -326,25 +328,34 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        
-        if(jTDNI.getText().isEmpty()||jTApellido.getText().isEmpty()||jTNombre.getText().isEmpty()||dcFechaNacim.getDate()==null){
-            JOptionPane.showMessageDialog(this, "Complete todos los campos", "CAMPOS VACIOS", JOptionPane.ERROR_MESSAGE);
-        }else{
-            int dni = Integer.parseInt(jTDNI.getText());
-            String apellido = jTApellido.getText();
-            String nombre = jTNombre.getText();            
-            Date f=new Date(dcFechaNacim.getDate().getTime());  //Casteo de util.Date a sql.Date
-            LocalDate fechaN = f.toLocalDate();     //recibo la fecha en sql.Date y la paso a localdate            
-            boolean estado = true;
-            
-            Alumno alum = new Alumno(dni,apellido,nombre,fechaN,estado);
-            
-            String texto = "DESEA GUARDAR EL ALUMNO/A:\n"+alum.toString();
-            int guardar = JOptionPane.showConfirmDialog(this, texto, "CONFIRMAR ALUMNO", JOptionPane.YES_NO_OPTION);
-            if(guardar == 0){
-                new AlumnoData().guardarAlumno(alum);                
-            }
-        }
+            if(jTDNI.getText().isEmpty()||jTApellido.getText().isEmpty()||jTNombre.getText().isEmpty()||dcFechaNacim.getDate()==null){
+                JOptionPane.showMessageDialog(this, "Complete todos los campos", "CAMPOS VACIOS", JOptionPane.ERROR_MESSAGE);
+            }else{
+                int dni = Integer.parseInt(jTDNI.getText());
+                String apellido = jTApellido.getText();
+                String nombre = jTNombre.getText();            
+                Date f=new Date(dcFechaNacim.getDate().getTime());  //Casteo de util.Date a sql.Date
+                LocalDate fechaN = f.toLocalDate();     //recibo la fecha en sql.Date y la paso a localdate            
+                boolean estado = true;
+
+                Alumno alum = new Alumno(dni,apellido,nombre,fechaN,estado);
+
+                if("Guardar".equalsIgnoreCase(jBGuardar.getText())){
+                    String texto = "DESEA GUARDAR EL ALUMNO/A:\n"+alum.toString();
+                    int guardar = JOptionPane.showConfirmDialog(this, texto, "CONFIRMAR ALUMNO", JOptionPane.YES_NO_OPTION);
+                    if(guardar == 0){
+                        new AlumnoData().guardarAlumno(alum);                
+                    }
+                }else{
+                    String texto = "DESEA GUARDAR LA MODIFICACION:\n"+alum.toString();
+                    int guardar = JOptionPane.showConfirmDialog(this, texto, "CONFIRMAR MODIFICACION", JOptionPane.YES_NO_OPTION);
+                    if(guardar == 0){
+                        alum.setActivo(jCEstado.isSelected());
+                        alum.setIdAlumno(Integer.parseInt(jTID.getText()));
+                        new AlumnoData().modificarAlumno(alum);                
+                    }                    
+                }
+            }            
         
 //        try {
 //            Integer dni = Integer.parseInt(jTDNI.getText());
@@ -390,6 +401,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
                 dcFechaNacim.setDate(Date.valueOf(alumno.getFechaNac()));
 
                 jBEliminar.setEnabled(true);
+                jBGuardar.setText("Modificar");
             }            
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
@@ -414,6 +426,7 @@ public class GestionAlumnos extends javax.swing.JInternalFrame {
         jCEstado.setSelected(false);
         dcFechaNacim.setCalendar(null);
         jBEliminar.setEnabled(false);
+        jBGuardar.setText("Guardar");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
