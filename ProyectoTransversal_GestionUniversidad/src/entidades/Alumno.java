@@ -81,7 +81,7 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "DNI: "+dni+"\nAPELLIDO: "+apellido+"\nNOMBRE: "+nombre+"\nF. NACIMIENTO: "+fechaNac.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return "DNI: "+dni+"\n APELLIDO: "+apellido+"\n NOMBRE: "+nombre+"\n F. NACIMIENTO: "+fechaNac.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
     
     
