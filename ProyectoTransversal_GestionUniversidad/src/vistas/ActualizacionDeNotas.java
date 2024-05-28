@@ -3,6 +3,7 @@ package vistas;
 import accesoADatos.AlumnoData;
 import accesoADatos.InscripcionData;
 import entidades.Alumno;
+import entidades.Inscripcion;
 import entidades.Materia;
 import java.awt.Dimension;
 import java.sql.Array;
@@ -17,15 +18,21 @@ import javax.swing.table.DefaultTableModel;
 public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
     private List<Alumno> listaAlumnos;
     private List<Materia> listaMaterias;
+    private List<Inscripcion> inscripciones;
     private AlumnoData alumData = new AlumnoData();
     private InscripcionData inscData = new InscripcionData();
     
     private DefaultTableModel modeloTabla = new DefaultTableModel() {
         @Override
+        
         public boolean isCellEditable(int i, int i1) {
-            return i1==2;
+
+            return i1 ==2;
+
         }        
     };
+    
+    
     
     public ActualizacionDeNotas() {
         initComponents();
@@ -68,7 +75,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/formulario-de-consentimiento-del.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INSCRIPCIÓN MATERIAS");
 
@@ -117,6 +123,11 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tabla);
 
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -202,13 +213,10 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -253,6 +261,18 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         int filaTabla = tabla.getSelectedRow();
+        if (filaTabla != (-1)) {
+            Alumno alumno = (Alumno) cbAlumnos.getSelectedItem();
+            int idAlum = alumno.getIdAlumno();
+            int idMat = (Integer) modeloTabla.getValueAt(filaTabla, 0);
+            double nota = Double.parseDouble((String) modeloTabla.getValueAt(filaTabla, 2));
+            inscData.actualizarNota(idAlum, idMat, nota);
+        } else {
+            JOptionPane.showInternalMessageDialog(this, "No se pudo guardar la nota");
+        }
+
+        /*
+        int filaTabla = tabla.getSelectedRow();
 
         if (filaTabla != (-1)) {
               List vecto;
@@ -263,17 +283,22 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
                 }
             }
 
-//            Alumno alumno = (Alumno) cbAlumnos.getSelectedItem();
-//            int idAlum = alumno.getIdAlumno();
-//            int idMat = (Integer) modeloTabla.getValueAt(filaTabla, 0);
-//            int nota = (Integer) modeloTabla.getValueAt(filaTabla, 2);
-//
-//            inscData.actualizarNota(idAlum, idMat, nota);
-//
-//        } else {
-//            JOptionPane.showInternalMessageDialog(this, "Seleccione una materia");
+            Alumno alumno = (Alumno) cbAlumnos.getSelectedItem();
+            int idAlum = alumno.getIdAlumno();
+            int idMat = (Integer) modeloTabla.getValueAt(filaTabla, 0);
+            int nota = (Integer) modeloTabla.getValueAt(filaTabla, 2);
+
+            inscData.actualizarNota(idAlum, idMat, nota);
+
+        } else {
+            JOptionPane.showInternalMessageDialog(this, "Seleccione una materia");
         }
+*/
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -325,12 +350,12 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
         borrarFilas();
         if (cbAlumnos.getSelectedIndex() > (-1)) {
             Alumno alumno = (Alumno) cbAlumnos.getSelectedItem();
-            listaMaterias = new ArrayList();
-            listaMaterias.addAll(inscData.materiasCursadas(alumno.getIdAlumno()));
-
-            for (Materia x : listaMaterias) {
-                modeloTabla.addRow(new Object[]{x.getIdMateria(), x.getNombre(), x.getAnioMateria()});
+            inscripciones = new ArrayList();
+            inscripciones.addAll(inscData.InscripcionesPorAlumnos(alumno.getIdAlumno()));
+            for (Inscripcion x : inscripciones) {
+                modeloTabla.addRow(new Object[]{x.getMateria().getIdMateria(), x.getMateria().getNombre(), x.getNota()});
             }
+
         }
     }
 
@@ -340,4 +365,5 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
             modeloTabla.removeRow(f);
         }
     }
+    
 }

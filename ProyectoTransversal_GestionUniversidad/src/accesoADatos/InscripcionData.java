@@ -89,7 +89,7 @@ public class InscripcionData {
             ps.setInt(3, idMateria);
             int filas = ps.executeUpdate();
 
-            if (filas > 0) {
+            if (filas == 1) {
                 JOptionPane.showMessageDialog(null, "Actualizacion realizada");
 
             }
