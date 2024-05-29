@@ -38,7 +38,6 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         pBotonesInf = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -53,7 +52,6 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/analisis-de-consultas (1).png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CONSULTA X MATERIA");
 
@@ -95,21 +93,15 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         pBotonesInf.setPreferredSize(new java.awt.Dimension(688, 50));
         pBotonesInf.setLayout(new java.awt.BorderLayout());
 
-        jButton3.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/guardar-datos (1).png"))); // NOI18N
-        jButton3.setText("Guardar");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 535, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
         pBotonesInf.add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -189,7 +181,6 @@ public class ConsultaDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
