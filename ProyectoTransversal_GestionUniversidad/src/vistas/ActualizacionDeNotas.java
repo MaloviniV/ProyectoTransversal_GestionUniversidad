@@ -271,29 +271,6 @@ public class ActualizacionDeNotas extends javax.swing.JInternalFrame {
             JOptionPane.showInternalMessageDialog(this, "No se pudo guardar la nota");
         }
 
-        /*
-        int filaTabla = tabla.getSelectedRow();
-
-        if (filaTabla != (-1)) {
-              List vecto;
-            vecto = (List) modeloTabla.getDataVector();
-            for (Object x : vecto) {
-                for (String y : x) {
-                    
-                }
-            }
-
-            Alumno alumno = (Alumno) cbAlumnos.getSelectedItem();
-            int idAlum = alumno.getIdAlumno();
-            int idMat = (Integer) modeloTabla.getValueAt(filaTabla, 0);
-            int nota = (Integer) modeloTabla.getValueAt(filaTabla, 2);
-
-            inscData.actualizarNota(idAlum, idMat, nota);
-
-        } else {
-            JOptionPane.showInternalMessageDialog(this, "Seleccione una materia");
-        }
-*/
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
